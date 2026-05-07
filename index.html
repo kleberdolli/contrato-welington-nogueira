@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contrato Musical - Welington Nogueira</title>
+  <style>
+    :root {
+      --ink: #172238;
+      --muted: #5f6a7a;
+      --line: #d8e0ec;
+      --paper: #fffdf8;
+      --blue: #095ddb;
+      --deep: #0b1534;
+      --cyan: #39c8ff;
+      --gold: #d8b46a;
+      --shadow: 0 24px 70px rgba(7, 18, 45, .28);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(5, 20, 52, .94), rgba(6, 72, 170, .86) 45%, rgba(10, 17, 39, .96)),
+        url("welington-nogueira.png") center top / cover fixed no-repeat;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 22% 14%, rgba(57, 200, 255, .28), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(216, 180, 106, .20), transparent 25%),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: auto, auto, 56px 56px, 56px 56px;
+      mix-blend-mode: screen;
+    }
+
+    .app {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.32);
+      background: rgba(255,255,255,.10);
+      border-radius: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 17px;
+    }
+
+    .brand span {
+      display: block;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      color: #07132c;
+      background: #f9fbff;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, .18);
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, #f3d486, #d8b46a);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .artist-panel {
+      position: sticky;
+      top: 22px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(7, 19, 45, .78);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: var(--shadow);
+      color: white;
+    }
+
+    .artist-photo {
+      aspect-ratio: 4 / 5;
+      background: url("welington-nogueira.png") center / cover no-repeat;
+      position: relative;
+    }
+
+    .artist-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(7, 19, 45, .95), transparent 44%);
+    }
+
+    .artist-copy {
+      padding: 0 24px 26px;
+      margin-top: -102px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .artist-copy .label {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 38px;
+      line-height: 1.03;
+    }
+
+    .artist-copy p {
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      line-height: 1.5;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+    }
+
+    .mini-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 10px;
+    }
+
+    .document {
+      background: var(--paper);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.75);
+    }
+
+    .doc-head {
+      padding: 34px 42px 30px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(9, 93, 219, .95), rgba(7, 19, 45, .98)),
+        url("welington-nogueira.png") center 35% / cover no-repeat;
+      position: relative;
+    }
+
+    .doc-head::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(7,19,45,.92), rgba(7,19,45,.54), rgba(9,93,219,.72));
+    }
+
+    .doc-head > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 12px;
+    }
+
+    .doc-head h2 {
+      margin: 10px 0 8px;
+      font-size: 32px;
+    }
+
+    .doc-head p {
+      margin: 0;
+      max-width: 640px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.5;
+    }
+
+    form {
+      padding: 34px 42px 42px;
+    }
+
+    .section {
+      padding: 0 0 28px;
+      margin: 0 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    h3 {
+      margin: 0 0 18px;
+      font-size: 18px;
+      color: var(--deep);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h3::before {
+      content: "";
+      width: 8px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--cyan), var(--gold));
+      border-radius: 99px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid.single {
+      grid-template-columns: 1fr;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #42506a;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #ccd6e5;
+      background: rgba(255,255,255,.92);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 13px 14px;
+      font: 500 15px/1.35 Arial, Helvetica, sans-serif;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(9, 93, 219, .12);
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .contract-text {
+      display: grid;
+      gap: 14px;
+      color: #243049;
+      line-height: 1.72;
+      font-size: 15px;
+    }
+
+    .contract-text p { margin: 0; }
+
+    .signatures {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 22px;
+    }
+
+    .signature {
+      padding-top: 42px;
+      border-top: 1px solid #8795aa;
+      text-align: center;
+      color: #4c596d;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      background: #f2f6fb;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #dce5f1;
+    }
+
+    @media (max-width: 920px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .artist-panel {
+        position: static;
+      }
+
+      .artist-photo {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .app {
+        width: min(100% - 18px, 1180px);
+        padding-top: 12px;
+      }
+
+      .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      button {
+        flex: 1;
+      }
+
+      form,
+      .doc-head {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .grid,
+      .signatures {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .toolbar,
+      .artist-panel,
+      .note {
+        display: none;
+      }
+
+      .app {
+        width: 100%;
+        padding: 0;
+      }
+
+      .shell {
+        display: block;
+      }
+
+      .document {
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .doc-head {
+        padding: 24px 28px;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      form {
+        padding: 24px 28px 0;
+      }
+
+      input,
+      textarea {
+        border-color: #8b98aa;
+        background: white;
+        padding: 8px 10px;
+      }
+
+      .section {
+        break-inside: avoid;
+        margin-bottom: 18px;
+        padding-bottom: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="toolbar">
+      <div class="brand">
+        <div class="mark">WN</div>
+        <div>
+          <strong>Contrato Musical Online</strong>
+          <span>Campos em branco para preenchimento e impressão</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" onclick="clearForm()">Limpar campos</button>
+        <button type="button" class="primary" onclick="window.print()">Gerar PDF / Imprimir</button>
+      </div>
+    </div>
+
+    <div class="shell">
+      <aside class="artist-panel" aria-label="Artista">
+        <div class="artist-photo"></div>
+        <div class="artist-copy">
+          <div class="label">Artista contratado</div>
+          <h1>Welington Nogueira</h1>
+          <p>Proposta de contrato para apresentação musical, pronta para preenchimento online e emissão em PDF.</p>
+          <div class="mini-list">
+            <div><span>Documento</span><b>Contrato</b></div>
+            <div><span>Formato</span><b>Online / PDF</b></div>
+            <div><span>Campos</span><b>Editáveis</b></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="document">
+        <header class="doc-head">
+          <div class="eyebrow">Contrato de Prestação de Serviços Musicais</div>
+          <h2>Welington Nogueira</h2>
+          <p>Preencha os campos variáveis abaixo. Ao finalizar, use o botão de impressão para salvar como PDF ou imprimir o contrato.</p>
+        </header>
+
+        <form id="contractForm">
+          <div class="section">
+            <h3>Dados do Contratante</h3>
+            <div class="grid">
+              <label>Nome / Empresa
+                <input name="contratante" autocomplete="off">
+              </label>
+              <label>CPF / CNPJ
+                <input name="documento" autocomplete="off">
+              </label>
+              <label>Telefone / WhatsApp
+                <input name="telefone" autocomplete="off">
+              </label>
+              <label>E-mail
+                <input name="email" type="email" autocomplete="off">
+              </label>
+              <label class="wide">Endereço
+                <input name="endereco" autocomplete="off">
+              </label>
+              <label>Representante
+                <input name="representante" autocomplete="off">
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Dados do Evento</h3>
+            <div class="grid">
+              <label>Nome do evento
+                <input name="evento" autocomplete="off">
+              </label>
+              <label>Data
+                <input name="data" type="date">
+              </label>
+              <label>Horário de início
+                <input name="inicio" type="time">
+              </label>
+              <label>Duração do show
+                <input name="duracao" autocomplete="off">
+              </label>
+              <label>Local
+                <input name="local" autocomplete="off">
+              </label>
+              <label>Cidade / UF
+                <input name="cidade" autocomplete="off">
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Condições Comerciais</h3>
+            <div class="grid">
+              <label>Valor total
+                <input name="valor" autocomplete="off">
+              </label>
+              <label>Forma de pagamento
+                <input name="pagamento" autocomplete="off">
+              </label>
+              <label>Sinal / Entrada
+                <input name="sinal" autocomplete="off">
+              </label>
+              <label>Data limite do pagamento
+                <input name="vencimento" type="date">
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Estrutura e Observações</h3>
+            <div class="grid single">
+              <label>Estrutura disponibilizada pelo contratante
+                <textarea name="estrutura"></textarea>
+              </label>
+              <label>Observações adicionais
+                <textarea name="observacoes"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Cláusulas do Contrato</h3>
+            <div class="contract-text">
+              <p>Por este instrumento particular, o CONTRATANTE acima identificado contrata o artista <strong>Welington Nogueira</strong> para realização de apresentação musical no evento informado neste documento.</p>
+              <p>A apresentação ocorrerá na data, horário, local e duração preenchidos nos campos variáveis, sendo responsabilidade das partes cumprir as condições comerciais, técnicas e operacionais aqui registradas.</p>
+              <p>O CONTRATANTE declara estar ciente de que alterações de data, horário, local, duração, estrutura ou condições de pagamento deverão ser acordadas previamente entre as partes.</p>
+              <p>O pagamento será realizado conforme os campos de valor, forma de pagamento, sinal e prazo preenchidos neste contrato, permanecendo estes espaços em branco até o preenchimento online.</p>
+              <p>Fica acordado que eventuais necessidades de som, iluminação, palco, energia, acesso, camarim, alimentação, transporte ou hospedagem deverão constar no campo de estrutura e observações.</p>
+              <p>E por estarem de acordo, as partes assinam o presente contrato para que produza seus efeitos legais.</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Local, Data e Assinaturas</h3>
+            <div class="grid">
+              <label>Local de assinatura
+                <input name="localAssinatura" autocomplete="off">
+              </label>
+              <label>Data de assinatura
+                <input name="dataAssinatura" type="date">
+              </label>
+            </div>
+            <div class="signatures">
+              <div class="signature">Contratante</div>
+              <div class="signature">Welington Nogueira</div>
+            </div>
+            <div class="note">Ao clicar em “Gerar PDF / Imprimir”, escolha a opção “Salvar como PDF” na janela de impressão do navegador.</div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("contractForm");
+    const storageKey = "contrato-welington-nogueira";
+
+    function saveForm() {
+      const data = {};
+      new FormData(form).forEach((value, key) => data[key] = value);
+      localStorage.setItem(storageKey, JSON.stringify(data));
+    }
+
+    function restoreForm() {
+      const saved = localStorage.getItem(storageKey);
+      if (!saved) return;
+      const data = JSON.parse(saved);
+      Object.entries(data).forEach(([key, value]) => {
+        const field = form.elements[key];
+        if (field) field.value = value;
+      });
+    }
+
+    function clearForm() {
+      form.reset();
+      localStorage.removeItem(storageKey);
+    }
+
+    form.addEventListener("input", saveForm);
+    restoreForm();
+  </script>
+</body>
+</html>
